@@ -11,6 +11,9 @@ public class ConsoleUI {
         return scanner;
     }
 
+    
+    
+//    ✔ Welcome Screen
     public void showWelcome() {
 
         System.out.println("======================================");
@@ -22,6 +25,9 @@ public class ConsoleUI {
     
     
     
+    
+    
+//    ✔ Ask Student Name
     public String readStudentName(){
 
         System.out.print("Enter Student Name : ");
@@ -31,6 +37,9 @@ public class ConsoleUI {
     }
     
     
+    
+    
+//    ✔ Ask Subject Count
     public int readSubjectCount(){
 
         System.out.print("Enter Number of Subjects : ");
@@ -41,6 +50,8 @@ public class ConsoleUI {
     
     
     
+    
+//    ✔ Ask Marks
     public int readMark(int subjectNumber){
 
         System.out.print(
@@ -54,6 +65,15 @@ public class ConsoleUI {
     
     
     
+//   professional way: 
+    
+//    public void showResult(Student student,GradeResult result){
+
+//}
+    
+    
+    
+//    ✔ Show Result
     public void showResult(
             String studentName,
             int total,
@@ -82,6 +102,8 @@ public class ConsoleUI {
     }
     
     
+    
+//    ✔ Show Error
     public void showError(
             String message){
 
@@ -95,6 +117,7 @@ public class ConsoleUI {
     
     
     
+//    ✔ Show Goodbye
     public void showGoodbye(){
 
         System.out.println();

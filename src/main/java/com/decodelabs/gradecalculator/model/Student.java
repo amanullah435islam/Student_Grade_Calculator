@@ -12,10 +12,14 @@ public class Student {
     private List<Integer> marks;
     // List<Integer> use korci karon all subject alada vabe define korar need nai.
     
+    
+    
+    
     //Default Constructor
     public Student() {
         this.marks = new ArrayList<>();
     }
+    
 
     //Parameterized Constructor    
     public Student(String name, List<Integer> marks) {
