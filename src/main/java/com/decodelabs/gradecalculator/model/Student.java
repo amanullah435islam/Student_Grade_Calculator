@@ -44,26 +44,6 @@ public class Student {
     }
     
     
-    
-    
-    // just test:
-	public static void main(String[] args) {
-	        
-	    	
-	     	Student student = new Student();
-	
-	    	student.setName("Aman");
-	
-	    	student.getMarks().add(90);
-	    	student.getMarks().add(85);
-	    	student.getMarks().add(75);
-	    	student.getMarks().add(100);
-	    	student.getMarks().add(80);
-	    }
-
-
-
-
 }
 
 
