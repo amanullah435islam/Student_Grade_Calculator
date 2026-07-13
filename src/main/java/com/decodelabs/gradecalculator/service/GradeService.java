@@ -7,27 +7,27 @@ import com.decodelabs.gradecalculator.enumn.Grade;
 public class GradeService {
 	
 
-    public String calculateGrade(double average){
+    public Grade calculateGrade(double average){
 
         if(average>=80)
-            return Grade.A_PLUS.toString();
+            return Grade.A_PLUS;
 
         if(average>=70)
-            return Grade.A.toString();
+            return Grade.A;
 
         if(average>=60)
-            return Grade.A_MINUS.toString();
+            return Grade.A_MINUS;
 
         if(average>=50)
-            return Grade.B.toString();
+            return Grade.B;
 
         if(average>=40)
-            return "C";
+            return Grade.C;
 
         if(average>=33)
-            return "D";
+            return Grade.D;
 
-        return "F";
+        return Grade.F;
 
     }
 

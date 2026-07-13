@@ -4,6 +4,7 @@ package com.decodelabs.gradecalculator.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.decodelabs.gradecalculator.enumn.Grade;
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
 import com.decodelabs.gradecalculator.service.*;
@@ -100,7 +101,7 @@ public class StudentController {
         double average = calculationService.calculateAverage(student.getMarks());
 
 //        Grade
-        String grade = gradeService.calculateGrade(average);
+        Grade grade = gradeService.calculateGrade(average);
       
 //        Pass
         boolean passed = gradeService.isPassed(student.getMarks());
@@ -117,23 +118,8 @@ public class StudentController {
 
         
 //        Show Result
-        consoleUI.showResult(
-
-                student.getName(),
-
-                result.getTotalMarks(),
-
-                result.getAveragePercentage(),
-
-                result.getGrade(),
-
-                result.isPassed()
-
-        );
+        consoleUI.showResult(student, result);
         
-        
-        //professional way::::
-        //consoleUI.showResult(student, result);
         
         
 //        Goodbye

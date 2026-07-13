@@ -3,6 +3,10 @@ package com.decodelabs.gradecalculator.ui;
 
 import java.util.Scanner;
 
+import com.decodelabs.gradecalculator.model.GradeResult;
+import com.decodelabs.gradecalculator.model.Student;
+import com.decodelabs.gradecalculator.util.InputHelper;
+
 public class ConsoleUI {
 
     private final Scanner scanner = new Scanner(System.in);
@@ -49,7 +53,7 @@ public class ConsoleUI {
     }
     
     
-    
+    InputHelper inputHelper = new InputHelper () ;
     
 //    ✔ Ask Marks
     public int readMark(int subjectNumber){
@@ -58,8 +62,14 @@ public class ConsoleUI {
                 "Enter Marks for Subject "
                         + subjectNumber
                         + " : ");
+        int mark =
+        		inputHelper.readInt(
+        				"Enter Marks for Subject "
+                                + subjectNumber
+                                + " : "
+        		);
 
-        return scanner.nextInt();
+        return mark;
 
     }
     
@@ -75,28 +85,24 @@ public class ConsoleUI {
     
 //    ✔ Show Result
     public void showResult(
-            String studentName,
-            int total,
-            double average,
-            String grade,
-            boolean passed){
+
+Student student,
+
+GradeResult result
+
+){
 
         System.out.println();
         System.out.println("========== RESULT ==========");
 
-        System.out.println("Student : " + studentName);
-
-        System.out.println("Total : " + total);
-
-        System.out.printf(
-                "Average : %.2f%%\n",
-                average);
-
-        System.out.println("Grade : " + grade);
+        System.out.println(
+                "Student : "
+                + student.getName()
+        );
 
         System.out.println(
-                "Status : "
-                        + (passed ? "PASS" : "FAIL")
+                "Grade : "
+                + result.getGrade()
         );
 
     }

@@ -1,5 +1,6 @@
 package com.decodelabs.gradecalculator.model;
 
+import com.decodelabs.gradecalculator.enumn.Grade;
 
 public class GradeResult {
 	
@@ -8,7 +9,7 @@ public class GradeResult {
 
     private double averagePercentage;
 
-    private String grade;
+    private Grade grade;
 
     private boolean passed;
 
@@ -23,7 +24,7 @@ public class GradeResult {
     
     public GradeResult(int totalMarks,
                        double averagePercentage,
-                       String grade,
+                       Grade grade,
                        boolean passed) {
 
         this.totalMarks = totalMarks;
@@ -52,11 +53,11 @@ public class GradeResult {
         this.averagePercentage = averagePercentage;
     }
 
-    public String getGrade() {
+    public Grade getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(Grade grade) {
         this.grade = grade;
     }
 

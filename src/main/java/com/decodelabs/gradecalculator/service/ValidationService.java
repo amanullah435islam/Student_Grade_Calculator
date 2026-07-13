@@ -11,7 +11,14 @@ public class ValidationService {
 
     }
 
-    
+    public boolean isValidName(
+            String name){
+
+        return name!=null
+                &&
+                !name.trim().isEmpty();
+
+    }
 
 //    public boolean isValidSubjectCount(int subjectCount) { 	
 //    	return false;
@@ -21,7 +28,9 @@ public class ValidationService {
     
     public boolean isValidSubjectCount(int count){
 
-        return count > 0;
+    	 return count>0
+    	            &&
+    	            count<=20;
 
     }
      
