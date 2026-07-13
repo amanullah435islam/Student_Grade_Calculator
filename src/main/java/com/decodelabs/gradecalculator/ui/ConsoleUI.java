@@ -1,22 +1,15 @@
 package com.decodelabs.gradecalculator.ui;
 
-
-import java.util.Scanner;
-
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
 import com.decodelabs.gradecalculator.util.InputHelper;
 
 public class ConsoleUI {
 
-    private final Scanner scanner = new Scanner(System.in);
+	InputHelper inputHelper = new InputHelper () ;
 
-    public Scanner getScanner() {
-        return scanner;
-    }
+	
 
-    
-    
 //    ✔ Welcome Screen
     public void showWelcome() {
 
@@ -33,35 +26,34 @@ public class ConsoleUI {
     
 //    ✔ Ask Student Name
     public String readStudentName(){
-
-        System.out.print("Enter Student Name : ");
-
-        return scanner.nextLine();
-
+    	System.out.print("Enter Student Name : ");
+    	String r = inputHelper.readString("Enter Student Name : ");
+    	
+    	return r;
+        
     }
     
     
     
     
 //    ✔ Ask Subject Count
-    public int readSubjectCount(){
+    public int readSubjectCount(){      
+        
+        int count =
+        		inputHelper.readInt(
+        				"Enter Number of Subjects : "
+        		);
 
-        System.out.print("Enter Number of Subjects : ");
-
-        return scanner.nextInt();
+        return count;
 
     }
     
     
-    InputHelper inputHelper = new InputHelper () ;
+    
     
 //    ✔ Ask Marks
     public int readMark(int subjectNumber){
 
-        System.out.print(
-                "Enter Marks for Subject "
-                        + subjectNumber
-                        + " : ");
         int mark =
         		inputHelper.readInt(
         				"Enter Marks for Subject "

@@ -38,5 +38,13 @@ public class InputHelper {
         }
 
     }
+    
+    public String readString(String message) {   	
+    	return scanner.nextLine();
+    }
 
 }
+
+
+
+
