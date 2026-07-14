@@ -28,8 +28,8 @@ public class StudentController {
     private final GPAService gpaService;
     
     private final ResultHistoryService resultHistoryService;
-    //ResultHistoryService resultHistoryService = new ResultHistoryService();
     
+    private final AnalyticsService analyticsService;
     
 
     public StudentController() {
@@ -46,6 +46,7 @@ public class StudentController {
         
         resultHistoryService = new ResultHistoryService();
 
+        analyticsService = new AnalyticsService();
     }
     
     
@@ -133,11 +134,69 @@ public class StudentController {
         boolean distinction =
                 gradeService.isDistinction(average);
         
+        List<StudentResult> results =
+                resultHistoryService.getAllResults();
+
         
+        
+//      // specialized code - 3 (using history)
+        
+        String name =
+                consoleUI.readSearchName();       
+
         List<StudentResult> history =
                 resultHistoryService.getAllResults();
 
-      
+        StudentResult students =
+                analyticsService.searchByName(history,name);
+
+        consoleUI.showSearchResult(students);
+        
+           
+//		// specialized code - 4 (using history)
+        StudentResult highest =
+                analyticsService.getTopStudent(history);
+
+        StudentResult lowest =
+                analyticsService.getLowestStudent(history);
+
+        double averages =
+                analyticsService.getClassAverage(history);
+
+        double passRate =
+                analyticsService.getPassRate(history);
+
+        double failRate =
+                analyticsService.getFailRate(history);
+
+        consoleUI.showStatistics(
+
+                highest,
+
+                lowest,
+
+                average,
+
+                passRate,
+
+                failRate
+
+        );
+        
+        
+        
+        
+//      // specialized code - 5 (using history)
+        
+        List<StudentResult> topFive =
+                analyticsService.getTopStudents(history,5);
+
+        consoleUI.showLeaderboard(topFive);
+        
+        
+     
+        
+        
         
         
 //        GradeResult
@@ -151,11 +210,11 @@ public class StudentController {
         result.setDistinction(distinction);
 
         
-//        Show Result
+//       Show Result
         consoleUI.showResult(student, result);
         
         
-//      result save:
+//      result save & specialized code
         
         try {
 
@@ -170,9 +229,18 @@ public class StudentController {
             e.printStackTrace();
         }
 
-//      save result show :
+        
+        
+//      save result show & specialized code - 2 (using history)
+        
       consoleUI.showHistory(history);
         
+      
+  
+      
+      
+      
+      
         
 //        Goodbye
         consoleUI.showGoodbye();

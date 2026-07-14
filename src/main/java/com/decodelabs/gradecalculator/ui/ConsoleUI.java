@@ -31,7 +31,7 @@ public class ConsoleUI {
     
 //    ✔ Ask Student Name
     public String readStudentName(){
-    	System.out.print("Enter Student Name : ");
+    	
     	String r = inputHelper.readString("Enter Student Name : ");
     	
     	return r;
@@ -43,17 +43,15 @@ public class ConsoleUI {
     public String readSubjectName(
             int number){
 
-        System.out.print(
-
-                "Enter Subject "
+        String r = inputHelper.readString(
+        		
+        		"Enter Subject "
 
                         + number
 
                         + " Name : "
-
-        );
-
-        String r = inputHelper.readString("Enter Student Name : ");
+        		
+        		);
     	
     	return r;
 
@@ -217,6 +215,7 @@ public class ConsoleUI {
     }
     
     
+   
     
 //    ✔ Show Goodbye
     public void showGoodbye(){
@@ -226,6 +225,109 @@ public class ConsoleUI {
         System.out.println(
                 "Thank you for using Student Grade Calculator."
         );
+
+    }
+
+
+
+
+
+	
+
+
+    public void showLeaderboard(List<StudentResult> students) {
+
+        System.out.println();
+        System.out.println("========= TOP STUDENTS =========");
+
+        int rank = 1;
+
+        for (StudentResult student : students) {
+
+            System.out.println(rank + ".");
+
+            System.out.println("Name : "
+                    + student.getStudent().getName());
+
+            System.out.println("Average : "
+                    + student.getGradeResult().getAveragePercentage());
+
+            System.out.println("Grade : "
+                    + student.getGradeResult().getGrade());
+
+            System.out.println("---------------------------");
+
+            rank++;
+        }
+    }
+
+    public void showStatistics(
+            StudentResult highest,
+            StudentResult lowest,
+            double classAverage,
+            double passRate,
+            double failRate) {
+
+        System.out.println();
+        System.out.println("========= CLASS STATISTICS =========");
+
+        System.out.println("Highest Student : "
+                + highest.getStudent().getName());
+
+        System.out.println("Lowest Student : "
+                + lowest.getStudent().getName());
+
+        System.out.printf("Class Average : %.2f%%%n",
+                classAverage);
+
+        System.out.printf("Pass Rate : %.2f%%%n",
+                passRate);
+
+        System.out.printf("Fail Rate : %.2f%%%n",
+                failRate);
+
+    }
+
+    
+    
+    public void showSearchResult(StudentResult student) {
+
+        if (student == null) {
+
+            System.out.println();
+            System.out.println("Student not found.");
+            return;
+
+        }
+
+        System.out.println();
+        System.out.println("========== SEARCH RESULT ==========");
+
+        System.out.println("Student : "
+                + student.getStudent().getName());
+
+        System.out.println("Total : "
+                + student.getGradeResult().getTotalMarks());
+
+        System.out.println("Average : "
+                + student.getGradeResult().getAveragePercentage());
+
+        System.out.println("Grade : "
+                + student.getGradeResult().getGrade());
+
+        System.out.println("GPA : "
+                + student.getGradeResult().getGpa());
+
+        System.out.println("Status : "
+                + (student.getGradeResult().isPassed() ? "PASS" : "FAIL"));
+
+    }
+    
+   
+    
+    public String readSearchName() {
+
+        return inputHelper.readString("Enter Student Name to Search : ");
 
     }
     

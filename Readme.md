@@ -11,3 +11,46 @@
   },
   "generatedAt": "2026-07-14T21:30:15"
 }
+
+
+
+Structure: =>
+
+
+Welcome
+
+↓
+
+Input
+
+↓
+
+Calculate
+
+↓
+
+Create GradeResult
+
+↓
+
+Show Result
+
+↓
+
+Save Result
+
+↓
+
+Read History
+
+↓
+
+Analytics
+
+↓
+
+History
+
+↓
+
+Goodbye

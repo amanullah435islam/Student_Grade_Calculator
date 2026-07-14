@@ -40,6 +40,8 @@ public class InputHelper {
     }
     
     public String readString(String message) {   	
+    	 
+    	System.out.print(message);
     	return scanner.nextLine();
     }
 
