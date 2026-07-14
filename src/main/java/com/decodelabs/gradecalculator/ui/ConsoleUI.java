@@ -1,5 +1,7 @@
 package com.decodelabs.gradecalculator.ui;
 
+import java.util.List;
+
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
 import com.decodelabs.gradecalculator.model.SubjectMark;
@@ -165,6 +167,25 @@ public class ConsoleUI {
                 "[ERROR] " + message
         );
 
+    }
+    
+    
+    
+    public void showHistory(List<String> history) {
+    	
+    	System.out.println();
+
+    	System.out.println(
+
+    	"========= HISTORY ========="
+
+    	);
+
+    	for(String line : history){
+
+    	System.out.println(line);
+
+    	}
     }
     
     

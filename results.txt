@@ -1,0 +1,4 @@
+hfhfh,130,65.0,A_MINUS,true,3.0
+sgvsdg,80,80.0,A_PLUS,true,4.0
+aman,255,85.0,A_PLUS,true,4.0
+Aman,252,84.0,A_PLUS,true,4.0

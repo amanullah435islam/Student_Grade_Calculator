@@ -1,6 +1,7 @@
 package com.decodelabs.gradecalculator.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class StudentController {
     
     private final GPAService gpaService;
     
+    private final ResultHistoryService resultHistoryService;
+    //ResultHistoryService resultHistoryService = new ResultHistoryService();
+    
     
 
     public StudentController() {
@@ -38,13 +42,15 @@ public class StudentController {
         gradeService = new GradeService();
         
         gpaService = new GPAService();
+        
+        resultHistoryService = new ResultHistoryService();
 
     }
     
     
     
     
-    public void start() {
+    public void start() throws IOException {
 
 //    	Welcome
         consoleUI.showWelcome();
@@ -127,6 +133,12 @@ public class StudentController {
                 gradeService.isDistinction(average);
         
         
+        List<String> history =
+                resultHistoryService.getAllResults();
+
+        consoleUI.showHistory(history);
+        
+        
 //        GradeResult
         GradeResult result = new GradeResult();
 
@@ -141,10 +153,30 @@ public class StudentController {
 //        Show Result
         consoleUI.showResult(student, result);
         
+//      after show result   
+        try {
+
+            resultHistoryService.saveResult(student, result);
+
+            System.out.println("Result Saved Successfully.");
+
+        } catch (IOException e) {
+
+            System.out.println("Save Failed.");
+
+            e.printStackTrace();
+        }
+
+     
         
         
 //        Goodbye
         consoleUI.showGoodbye();
+        
+        
+//        after show result :
+        consoleUI.showHistory(history);
+        
     }
     
     
