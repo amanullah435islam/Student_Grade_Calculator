@@ -2,6 +2,8 @@ package com.decodelabs.gradecalculator.ui;
 
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
+import com.decodelabs.gradecalculator.model.SubjectMark;
+import com.decodelabs.gradecalculator.service.GradeService;
 import com.decodelabs.gradecalculator.util.InputHelper;
 
 public class ConsoleUI {
@@ -88,57 +90,67 @@ public class ConsoleUI {
     
     
 //    ✔ Show Result
-    public void showResult(Student student,GradeResult result){
+    public void showResult(Student student, GradeResult result) {
 
         System.out.println();
-        System.out.println("========== RESULT ==========");
+        System.out.println("==================================================");
+        System.out.println("             STUDENT REPORT CARD");
+        System.out.println("==================================================");
 
-        System.out.println(
-                "Student : "
-                + student.getName()
-        );
+        System.out.println();
+        System.out.println("Student Name : " + student.getName());
 
-        System.out.println(
-                "Total : "
-                + result.getTotalMarks()
-        );
+        System.out.println();
+        System.out.println("--------------------------------------------------");
+        System.out.printf("%-15s %-10s %-10s%n",
+                "Subject",
+                "Marks",
+                "Grade");
+        System.out.println("--------------------------------------------------");
 
-//        System.out.println(
-//                "Average : "
-//                + result.getAveragePercentage()
-//        );
+        GradeService gradeService = new GradeService();
 
-        System.out.printf(
-                "Average : %.2f%%\n",
+        for (SubjectMark subject : student.getSubjectMarks()) {
+
+            System.out.printf(
+                    "%-15s %-10d %-10s%n",
+                    subject.getSubjectName(),
+                    subject.getMark(),
+                    gradeService.calculateGrade(subject.getMark())
+            );
+        }
+
+        System.out.println();
+        System.out.println("--------------------------------------------------");
+
+        System.out.printf("%-18s %d%n",
+                "Total",
+                result.getTotalMarks());
+
+        System.out.printf("%-18s %.2f%%%n",
+                "Average",
                 result.getAveragePercentage());
-        
-        System.out.println(
-                "Grade : "
-                + result.getGrade()
-        );
 
-        System.out.println(
-                "Status : "
-                + (result.isPassed() ? "PASS" : "FAIL")
-        );
-        
-        System.out.printf(
-                "GPA : %.2f%n",
-                result.getGpa()
-        );
-        
-//        System.out.println(
-//                "GPA : "
-//                + result.getGpa()
-//        );
-        
-        System.out.println(
-                "Achievement : "
-                + (result.isDistinction()
-                    ? "Distinction"
-                    : "None")
-        );
+        System.out.printf("%-18s %s%n",
+                "Overall Grade",
+                result.getGrade());
 
+        System.out.printf("%-18s %s%n",
+                "Status",
+                result.isPassed() ? "PASS" : "FAIL");
+
+        System.out.printf("%-18s %.2f%n",
+                "GPA",
+                result.getGpa());
+
+        System.out.printf("%-18s %s%n",
+                "Achievement",
+                result.isDistinction()
+                        ? "Distinction"
+                        : "None");
+
+        System.out.println();
+        System.out.println("==================================================");
     }
     
     
