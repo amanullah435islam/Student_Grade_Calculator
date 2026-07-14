@@ -3,17 +3,19 @@ package com.decodelabs.gradecalculator.service;
 
 import java.util.List;
 
+import com.decodelabs.gradecalculator.model.SubjectMark;
+
 public class CalculationService {
 	
 	
 
-    public int calculateTotal(List<Integer> marks){
+    public int calculateTotal(List<SubjectMark> marks){
 
         int total = 0;
 
-        for(Integer mark : marks){
+        for(SubjectMark subject : marks){
 
-            total += mark;
+            total += subject.getMark();
 
         }
 
@@ -22,14 +24,9 @@ public class CalculationService {
     }
     
     
-
-//    public int calculateAverage(List<Integer> marks) {	
-//    	return 0;
-//    }
     
     
-    
-    public double calculateAverage(List<Integer> marks){
+    public double calculateAverage(List<SubjectMark> marks){
 
         int total =
                 calculateTotal(marks);

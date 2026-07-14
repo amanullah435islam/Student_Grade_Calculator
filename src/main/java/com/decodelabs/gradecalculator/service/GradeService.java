@@ -2,6 +2,7 @@ package com.decodelabs.gradecalculator.service;
 
 import java.util.List;
 import com.decodelabs.gradecalculator.enumn.Grade;
+import com.decodelabs.gradecalculator.model.SubjectMark;
 
 
 public class GradeService {
@@ -43,11 +44,11 @@ public class GradeService {
 //    } 
     
     
-    public boolean isPassed(List<Integer> marks){
+    public boolean isPassed(List<SubjectMark> marks){
 
-        for(Integer mark : marks){
+        for(SubjectMark mark : marks){
 
-            if(mark<33){
+            if(mark.getMark()<33){
 
                 return false;
 

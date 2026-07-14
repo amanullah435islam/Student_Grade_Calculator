@@ -11,7 +11,7 @@ import com.decodelabs.gradecalculator.model.SubjectMark;
 import com.decodelabs.gradecalculator.service.*;
 import com.decodelabs.gradecalculator.ui.ConsoleUI;
 
-public class StudentController {
+public class jj_oldcode {
 	
 	
 
@@ -25,7 +25,7 @@ public class StudentController {
     
     
 
-    public StudentController() {
+    public jj_oldcode() {
 
         consoleUI = new ConsoleUI();
 
@@ -49,11 +49,10 @@ public class StudentController {
 //        Student Name
         String studentName = consoleUI.readStudentName();
 
-        
-        
 //        Subject Count
         int subjectCount = consoleUI.readSubjectCount();
-        //String subjectName = consoleUI.readSubjectName(subjectCount);
+        
+        
 
         
 //        Validation 
@@ -65,26 +64,24 @@ public class StudentController {
         }
 
         
-     // Subject Marks
-        List<SubjectMark> subjectMarks = new ArrayList<>();
+        
+//        Marks
+        List<SubjectMark> SubjectMarks = new ArrayList<>();
 
-        // Loop
+//        Loop
         for (int i = 1; i <= subjectCount; i++) {
 
-            // Read Subject Name
-            String subjectName = consoleUI.readSubjectName(i);
-
-            // Read Mark
+        	 String subjectName = consoleUI.readSubjectName(i);
             int mark = consoleUI.readMark(i);
 
-            // Validation
+//            Validation
             while (!validationService.isValidMark(mark)) {
 
                 consoleUI.showError("Marks must be between 0 and 100.");
 
                 mark = consoleUI.readMark(i);
             }
-
+            
             // Create SubjectMark Object
             SubjectMark subjectMark = new SubjectMark();
 
@@ -92,15 +89,17 @@ public class StudentController {
             subjectMark.setMark(mark);
 
             // Add into List
-            subjectMarks.add(subjectMark);
+            SubjectMarks.add(subjectMark);
+
         }
+
         
         
 //        Create Student
         Student student = new Student();
 
         student.setName(studentName);
-        student.setSubjectMarks(subjectMarks);
+        student.setSubjectMarks(SubjectMarks);
 
         
         

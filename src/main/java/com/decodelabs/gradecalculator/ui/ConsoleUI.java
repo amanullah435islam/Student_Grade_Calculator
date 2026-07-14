@@ -34,6 +34,25 @@ public class ConsoleUI {
     }
     
     
+//  ✔ Ask Subject Name
+    public String readSubjectName(
+            int number){
+
+        System.out.print(
+
+                "Enter Subject "
+
+                        + number
+
+                        + " Name : "
+
+        );
+
+        String r = inputHelper.readString("Enter Student Name : ");
+    	
+    	return r;
+
+    } 
     
     
 //    ✔ Ask Subject Count
@@ -52,37 +71,24 @@ public class ConsoleUI {
     
     
 //    ✔ Ask Marks
-    public int readMark(int subjectNumber){
+    public int readMark(int subject){
 
         int mark =
         		inputHelper.readInt(
-        				"Enter Marks for Subject "
-                                + subjectNumber
+        				"Enter Marks for "
+                                + subject
                                 + " : "
         		);
 
         return mark;
 
     }
-    
-    
-    
-//   professional way: 
-    
-//    public void showResult(Student student,GradeResult result){
-
-//}
+   
     
     
     
 //    ✔ Show Result
-    public void showResult(
-
-Student student,
-
-GradeResult result
-
-){
+    public void showResult(Student student,GradeResult result){
 
         System.out.println();
         System.out.println("========== RESULT ==========");
@@ -93,8 +99,27 @@ GradeResult result
         );
 
         System.out.println(
+                "Total : "
+                + result.getTotalMarks()
+        );
+
+//        System.out.println(
+//                "Average : "
+//                + result.getAveragePercentage()
+//        );
+
+        System.out.printf(
+                "Average : %.2f%%\n",
+                result.getAveragePercentage());
+        
+        System.out.println(
                 "Grade : "
                 + result.getGrade()
+        );
+
+        System.out.println(
+                "Status : "
+                + (result.isPassed() ? "PASS" : "FAIL")
         );
 
     }
