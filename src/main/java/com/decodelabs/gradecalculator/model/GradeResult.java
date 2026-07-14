@@ -11,9 +11,11 @@ public class GradeResult {
 
     private Grade grade;
 
+    private double gpa;
+
     private boolean passed;
 
-    
+    private boolean distinction;
     
     
     
@@ -34,10 +36,26 @@ public class GradeResult {
     }
 
     
-    
-    
-    
-    public int getTotalMarks() {
+
+
+	public GradeResult(int totalMarks, 
+					   double averagePercentage, 
+					   Grade grade, 
+					   double gpa, 
+					   boolean passed,
+					   boolean distinction
+					   ) {
+		
+		this.totalMarks = totalMarks;
+		this.averagePercentage = averagePercentage;
+		this.grade = grade;
+		this.gpa = gpa;
+		this.passed = passed;
+		this.distinction = distinction;
+	}
+
+
+	public int getTotalMarks() {
         return totalMarks;
     }
 
@@ -68,6 +86,26 @@ public class GradeResult {
     public void setPassed(boolean passed) {
         this.passed = passed;
     }
+
+
+	public double getGpa() {
+		return gpa;
+	}
+
+
+	public void setGpa(double gpa) {
+		this.gpa = gpa;
+	}
+
+
+	public boolean isDistinction() {
+		return distinction;
+	}
+
+
+	public void setDistinction(boolean distinction) {
+		this.distinction = distinction;
+	}
     
 
 }

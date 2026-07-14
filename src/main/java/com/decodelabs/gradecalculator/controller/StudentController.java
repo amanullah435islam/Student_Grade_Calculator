@@ -23,6 +23,8 @@ public class StudentController {
 
     private final GradeService gradeService;
     
+    private final GPAService gpaService;
+    
     
 
     public StudentController() {
@@ -34,6 +36,8 @@ public class StudentController {
         calculationService = new CalculationService();
 
         gradeService = new GradeService();
+        
+        gpaService = new GPAService();
 
     }
     
@@ -116,6 +120,11 @@ public class StudentController {
 //        Pass
         boolean passed = gradeService.isPassed(student.getSubjectMarks());
 
+        double gpa =
+                gpaService.calculateGpa(average);
+        
+        boolean distinction =
+                gradeService.isDistinction(average);
         
         
 //        GradeResult
@@ -125,6 +134,8 @@ public class StudentController {
         result.setAveragePercentage(average);
         result.setGrade(grade);
         result.setPassed(passed);
+        result.setGpa(gpa);
+        result.setDistinction(distinction);
 
         
 //        Show Result

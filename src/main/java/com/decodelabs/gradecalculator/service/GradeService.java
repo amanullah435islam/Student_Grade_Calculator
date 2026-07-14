@@ -32,17 +32,32 @@ public class GradeService {
 
     }
 
-    
+    public Grade calculateGrade(int mark) {
+    	
+    	
+    	if (mark >= 80)
+            return Grade.A_PLUS;
 
-    
-// Only Pass/Fail::::::::
-    
-//    public boolean isPassed(double average){
-//
-//        return average>=33;
-//
-//    } 
-    
+        if (mark >= 70)
+            return Grade.A;
+
+        if (mark >= 60)
+            return Grade.A_MINUS;
+
+        if (mark >= 50)
+            return Grade.B;
+
+        if (mark >= 40)
+            return Grade.C;
+
+        if (mark >= 33)
+            return Grade.D;
+
+        return Grade.F;
+        
+    }
+
+   
     
     public boolean isPassed(List<SubjectMark> marks){
 
@@ -60,5 +75,10 @@ public class GradeService {
 
     }
     
+    
+    public boolean isDistinction(double average){
+
+        return average >= 80;
+    }
     
 }

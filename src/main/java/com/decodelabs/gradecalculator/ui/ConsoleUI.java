@@ -121,6 +121,23 @@ public class ConsoleUI {
                 "Status : "
                 + (result.isPassed() ? "PASS" : "FAIL")
         );
+        
+        System.out.printf(
+                "GPA : %.2f%n",
+                result.getGpa()
+        );
+        
+//        System.out.println(
+//                "GPA : "
+//                + result.getGpa()
+//        );
+        
+        System.out.println(
+                "Achievement : "
+                + (result.isDistinction()
+                    ? "Distinction"
+                    : "None")
+        );
 
     }
     
