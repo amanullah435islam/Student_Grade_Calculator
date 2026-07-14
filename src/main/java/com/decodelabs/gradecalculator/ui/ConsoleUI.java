@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
+import com.decodelabs.gradecalculator.model.StudentResult;
 import com.decodelabs.gradecalculator.model.SubjectMark;
 import com.decodelabs.gradecalculator.service.GradeService;
 import com.decodelabs.gradecalculator.util.InputHelper;
@@ -171,21 +172,48 @@ public class ConsoleUI {
     
     
     
-    public void showHistory(List<String> history) {
-    	
-    	System.out.println();
+    public void showHistory(List<StudentResult> history) {
 
-    	System.out.println(
+        System.out.println();
 
-    	"========= HISTORY ========="
+        System.out.println("=========== HISTORY ===========");
 
-    	);
+        for (StudentResult result : history) {
 
-    	for(String line : history){
+            System.out.println("----------------------------");
 
-    	System.out.println(line);
+            System.out.println(
+                    "Student : "
+                            + result.getStudent().getName()
+            );
 
-    	}
+            System.out.println(
+                    "Total : "
+                            + result.getGradeResult().getTotalMarks()
+            );
+
+            System.out.println(
+                    "Average : "
+                            + result.getGradeResult().getAveragePercentage()
+            );
+
+            System.out.println(
+                    "Grade : "
+                            + result.getGradeResult().getGrade()
+            );
+
+            System.out.println(
+                    "GPA : "
+                            + result.getGradeResult().getGpa()
+            );
+
+            System.out.println(
+                    "Date : "
+                            + result.getGeneratedAt()
+            );
+
+        }
+
     }
     
     

@@ -8,6 +8,7 @@ import java.util.List;
 import com.decodelabs.gradecalculator.enumn.Grade;
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
+import com.decodelabs.gradecalculator.model.StudentResult;
 import com.decodelabs.gradecalculator.model.SubjectMark;
 import com.decodelabs.gradecalculator.service.*;
 import com.decodelabs.gradecalculator.ui.ConsoleUI;
@@ -133,10 +134,10 @@ public class StudentController {
                 gradeService.isDistinction(average);
         
         
-        List<String> history =
+        List<StudentResult> history =
                 resultHistoryService.getAllResults();
 
-        consoleUI.showHistory(history);
+      
         
         
 //        GradeResult
@@ -153,7 +154,9 @@ public class StudentController {
 //        Show Result
         consoleUI.showResult(student, result);
         
-//      after show result   
+        
+//      result save:
+        
         try {
 
             resultHistoryService.saveResult(student, result);
@@ -167,15 +170,15 @@ public class StudentController {
             e.printStackTrace();
         }
 
-     
+//      save result show :
+      consoleUI.showHistory(history);
         
         
 //        Goodbye
         consoleUI.showGoodbye();
         
         
-//        after show result :
-        consoleUI.showHistory(history);
+
         
     }
     

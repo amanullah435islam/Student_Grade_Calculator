@@ -5,11 +5,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.decodelabs.gradecalculator.enumn.Grade;
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
+import com.decodelabs.gradecalculator.model.StudentResult;
 
 
 public class ResultHistoryService {
@@ -36,31 +39,35 @@ public class ResultHistoryService {
 
 				){
 
-				writer.write(
+			writer.write(
 
-				student.getName()
+					student.getName()
 
-				+ ","
+					+ ","
 
-				+ result.getTotalMarks()
+					+ result.getTotalMarks()
 
-				+ ","
+					+ ","
 
-				+ result.getAveragePercentage()
+					+ result.getAveragePercentage()
 
-				+ ","
+					+ ","
 
-				+ result.getGrade()
+					+ result.getGrade()
 
-				+ ","
+					+ ","
 
-				+ result.isPassed()
+					+ result.isPassed()
 
-				+ ","
+					+ ","
 
-				+ result.getGpa()
+					+ result.getGpa()
 
-				);
+					+ ","
+
+					+ LocalDateTime.now()
+
+					);
 
 				writer.newLine();
 
@@ -69,23 +76,41 @@ public class ResultHistoryService {
 	
 	
 //	List<GradeResult> ---->next work. :-
-	public List<String> getAllResults() {
+	public List<StudentResult> getAllResults() {
 
-	    List<String> results = new ArrayList<>();
+	    List<StudentResult> results = new ArrayList<>();
 
-	    try (
-
-	            BufferedReader reader =
-	                    new BufferedReader(
-	                            new FileReader("results.txt"))
-
-	    ) {
+	    try (BufferedReader reader =
+	                 new BufferedReader(new FileReader("results.txt"))) {
 
 	        String line;
 
 	        while ((line = reader.readLine()) != null) {
 
-	            results.add(line);
+	            String[] data = line.split(",");
+
+	            Student student = new Student();
+	            student.setName(data[0]);
+
+	            GradeResult gradeResult = new GradeResult();
+	            gradeResult.setTotalMarks(Integer.parseInt(data[1]));
+	            gradeResult.setAveragePercentage(Double.parseDouble(data[2]));
+	            gradeResult.setGrade(Grade.valueOf(data[3]));
+	            gradeResult.setPassed(Boolean.parseBoolean(data[4]));
+	            gradeResult.setGpa(Double.parseDouble(data[5]));
+
+	            StudentResult result = new StudentResult();
+
+	            result.setStudent(student);
+	            result.setGradeResult(gradeResult);
+	            
+	            if (data.length > 6) {
+
+	                result.setGeneratedAt(
+	                        LocalDateTime.parse(data[6]));
+
+	            }
+	            results.add(result);
 
 	        }
 
@@ -96,6 +121,5 @@ public class ResultHistoryService {
 	    }
 
 	    return results;
-	}
-	    
+	}	    
 }
