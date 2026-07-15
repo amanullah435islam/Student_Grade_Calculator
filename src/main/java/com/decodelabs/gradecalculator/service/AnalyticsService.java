@@ -12,39 +12,20 @@ public class AnalyticsService {
 
     public StudentResult searchByName(List<StudentResult> students,
                                       String name) {
-    	
-    	for(StudentResult student : students){
+    	  	
+    	return students.stream()
 
-    	    if(student
-    	            .getStudent()
-    	            .getName()
-    	            .equalsIgnoreCase(name)){
+    	        .filter(s ->
 
-    	        return student;
+    	                s.getStudent()
 
-    	    }
+    	                        .getName()
 
-    	}
+    	                        .equalsIgnoreCase(name))
 
-    	return null;
-    	
-    	
-    	
-//    	professional:
-    	
-//    	return students.stream()
-//
-//    	        .filter(s ->
-//
-//    	                s.getStudent()
-//
-//    	                        .getName()
-//
-//    	                        .equalsIgnoreCase(name))
-//
-//    	        .findFirst()
-//
-//    	        .orElse(null);
+    	        .findFirst()
+
+    	        .orElse(null);
     	
     	
     }

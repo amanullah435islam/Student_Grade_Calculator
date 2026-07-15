@@ -1,15 +1,26 @@
 package com.decodelabs.gradecalculator.service;
 
+import com.decodelabs.gradecalculator.constant.AppConstants;
+import com.decodelabs.gradecalculator.exception.InvalidMarkException;
 
 public class ValidationService {
 	
 	
 
-    public boolean isValidMark(int mark) {
+	public void validateMark(int mark)
+	        throws InvalidMarkException {
 
-        return mark >= 0 && mark <= 100;
+	    if(mark < AppConstants.MIN_MARK || mark > AppConstants.MAX_MARK) {
 
-    }
+	        throw new InvalidMarkException(
+	                "Marks must be between 0 and 100."
+	        );
+
+	    }
+
+	}
+    
+    
 
     public boolean isValidName(
             String name){
@@ -20,10 +31,6 @@ public class ValidationService {
 
     }
 
-//    public boolean isValidSubjectCount(int subjectCount) { 	
-//    	return false;
-//    }
-    
     
     
     public boolean isValidSubjectCount(int count){

@@ -4,8 +4,10 @@ package com.decodelabs.gradecalculator.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.decodelabs.gradecalculator.enumn.Grade;
+import com.decodelabs.gradecalculator.exception.InvalidMarkException;
 import com.decodelabs.gradecalculator.model.GradeResult;
 import com.decodelabs.gradecalculator.model.Student;
 import com.decodelabs.gradecalculator.model.StudentResult;
@@ -15,8 +17,12 @@ import com.decodelabs.gradecalculator.ui.ConsoleUI;
 
 public class StudentController {
 	
-	
+	private static final Logger LOGGER =
+	        Logger.getLogger(
+	                StudentController.class.getName()
+	        );
 
+	
     private final ConsoleUI consoleUI;
 
     private final ValidationService validationService;
@@ -65,8 +71,7 @@ public class StudentController {
         
 //        Subject Count
         int subjectCount = consoleUI.readSubjectCount();
-        //String subjectName = consoleUI.readSubjectName(subjectCount);
-
+       
         
 //        Validation 
         while (!validationService.isValidSubjectCount(subjectCount)) {
@@ -89,12 +94,15 @@ public class StudentController {
             // Read Mark
             int mark = consoleUI.readMark(i);
 
-            // Validation
-            while (!validationService.isValidMark(mark)) {
+            // Validation            
+            try {
 
-                consoleUI.showError("Marks must be between 0 and 100.");
+                validationService.validateMark(mark);
 
-                mark = consoleUI.readMark(i);
+            } catch (InvalidMarkException ex) {
+
+                consoleUI.showError(ex.getMessage());
+
             }
 
             // Create SubjectMark Object
@@ -219,14 +227,18 @@ public class StudentController {
         try {
 
             resultHistoryService.saveResult(student, result);
+             
+            // Developer Log
+            LOGGER.info("Result Saved Successfully.");
 
-            System.out.println("Result Saved Successfully.");
+//          // User Message
+//            System.out.println("Result Saved Successfully.");
 
         } catch (IOException e) {
-
-            System.out.println("Save Failed.");
-
-            e.printStackTrace();
+     
+            LOGGER.severe("Failed to save result : " + e.getMessage());
+            
+            //e.printStackTrace();
         }
 
         

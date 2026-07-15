@@ -1,6 +1,8 @@
 package com.decodelabs.gradecalculator.service;
 
 import java.util.List;
+
+import com.decodelabs.gradecalculator.constant.AppConstants;
 import com.decodelabs.gradecalculator.enumn.Grade;
 import com.decodelabs.gradecalculator.model.SubjectMark;
 
@@ -63,7 +65,7 @@ public class GradeService {
 
         for(SubjectMark mark : marks){
 
-            if(mark.getMark()<33){
+            if(mark.getMark()<AppConstants.PASS_MARK){
 
                 return false;
 
