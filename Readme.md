@@ -1,56 +1,148 @@
-{
-  "student": {
-    "name": "Aman"
-  },
-  "gradeResult": {
-    "totalMarks": 428,
-    "averagePercentage": 85.6,
-    "grade": "A_PLUS",
-    "gpa": 4.0,
-    "passed": true
-  },
-  "generatedAt": "2026-07-14T21:30:15"
-}
+# 🎓 Student Grade Calculator
 
+> A professional Java console application developed as part of the DecodeLabs Industrial Training Program.
 
+---
 
-Structure: =>
+# 📖 Project Overview
 
+Student Grade Calculator is a Java console application that calculates the total marks, average percentage, and final grade of a student based on marks obtained in multiple subjects.
 
-Welcome
+The project demonstrates arithmetic operations, loops, conditional statements, input validation, and object-oriented programming while following a clean layered architecture.
 
+---
+
+# ✨ Features
+
+- Student information
+- Multiple subject marks
+- Total marks calculation
+- Average percentage calculation
+- Automatic grade generation
+- Pass/Fail status
+- Input validation
+- Clean console output
+- Professional layered architecture
+
+---
+
+# 🎯 Learning Objectives
+
+- Variables
+- Loops
+- Arrays / Collections
+- Arithmetic Operations
+- Conditional Statements
+- Methods
+- Object-Oriented Programming
+
+---
+
+# 🛠 Technologies Used
+
+- Java 21
+- Maven
+- IntelliJ IDEA / Eclipse
+- Git
+- GitHub
+
+---
+
+# 📂 Project Structure
+
+src/main/java
+
+com.decodelabs.gradecalculator
+
+├── controller
+├── service
+├── model
+├── ui
+├── util
+├── exception
+└── Main.java
+
+---
+
+# 🏗 Architecture
+
+Presentation Layer
 ↓
-
-Input
-
+Controller Layer
 ↓
-
-Calculate
-
+Service Layer
 ↓
+Model Layer
 
-Create GradeResult
+---
 
-↓
+# ▶️ How to Run
 
-Show Result
+1. Clone the repository
+2. Open the project in IntelliJ IDEA or Eclipse
+3. Build the project using Maven
+4. Run Main.java
 
-↓
+---
 
-Save Result
+# 🖥 Sample Output
 
-↓
+Student Name : Aman
 
-Read History
+Math : 90
 
-↓
+English : 88
 
-Analytics
+Physics : 85
 
-↓
+Total : 263
 
-History
+Average : 87.67%
 
-↓
+Grade : A+
 
-Goodbye
+Status : PASS
+
+---
+
+# 📚 OOP Concepts Used
+
+- Encapsulation
+- Layered Architecture
+- Separation of Concerns
+
+---
+
+# 🚀 Future Improvements
+
+- Result History
+- File Storage
+- Spring Boot REST API
+- MySQL Integration
+- Angular Frontend
+
+---
+
+# 📊 Project Status
+
+✅ Completed
+
+---
+
+# 👨‍💻 Author
+
+Md. Amanullah
+
+Software Developer
+
+---
+
+# 🙏 Acknowledgements
+
+DecodeLabs Industrial Training Program
+
+---
+
+# 📄 License
+
+This project was developed for educational purposes.
